@@ -1,0 +1,19 @@
+{
+  "name": "socialmedial",
+  "version": "1.0.0",
+  "description": "Social Network for Devlopers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvillalp/socialmedial.git"
+  },
+  "author": "Juana Villalpando",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jvillalp/socialmedial/issues"
+  },
+  "homepage": "https://github.com/jvillalp/socialmedial#readme"
+}
