@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const gravatar = require('gravatar')
 // need a second para, of middleware and check if username, if username, if length is same, check if there are any errors or if name is there
 const { check, vaidationResult, validationResult } = require('express-validator')
 //@route          GET api/users
@@ -40,6 +41,11 @@ router.post("/", [
 
 
             // get users gravatar 
+            const avator = gravatar.url(email, {
+                s: '200',
+                r: 'pg',
+                d: 'mm'
+            })
 
             //encrypt password susing bycrpt
 
