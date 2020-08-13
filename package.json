@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jvillalp/socialmedial.git"
+    "url": "git+https://github.com/jvillalp/socialmedia.git"
   },
   "author": "Juana Villalpando",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jvillalp/socialmedial/issues"
+    "url": "https://github.com/jvillalp/socialmedia/issues"
   },
-  "homepage": "https://github.com/jvillalp/socialmedial#readme",
+  "homepage": "https://github.com/jvillalp/socialmedia#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
