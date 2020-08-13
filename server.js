@@ -4,6 +4,10 @@ const app = express();
 
 //connect database
 connectDB();
+
+//init Midleware - should allow us to get data in body
+app.use(express.json({ extended: false }))
+
 //get request to confirm server is running
 app.get('/', (req, res) => res.send("API Running"))
 
