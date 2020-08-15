@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar')
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
 // need a second para, of middleware and check if username, if username, if length is same, check if there are any errors or if name is there
 const { check, vaidationResult, validationResult } = require('express-validator')
 //@route          GET api/users
@@ -47,8 +48,16 @@ router.post("/", [
                 d: 'mm'
             })
 
+            user = new User({
+                name,
+                email,
+                avatar,
+                password
+            });
             //encrypt password susing bycrpt
+            const salt = await bcrypt.genSalt(10);
 
+            user.password = await bcrypt.hash();
             //return jsonwebtoken
             res.send('User Route');
         } catch (err) {
