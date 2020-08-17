@@ -55,11 +55,14 @@ router.post("/", [
                 password
             });
             //encrypt password susing bycrpt
+
+            //or can do call-backs (.then, . catch)
+            //await is much more elegent and readable
             const salt = await bcrypt.genSalt(10); //create salt to do hashing with
 
             user.password = await bcrypt.hash(password, salt);//take password and hash it
 
-
+            await user.save(); //anything you have to return, have to create a promise
 
             user.password = await bcrypt.hash();
             //return jsonwebtoken
