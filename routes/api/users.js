@@ -23,6 +23,7 @@ router.post("/", [
     check('email', "Please include a valid email").isEmail(),//formated as email address
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
 ],
+    //to use await, you have to define an async function
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -37,12 +38,12 @@ router.post("/", [
             let user = await User.findOne({ email });
 
             if (user) {
-                res.status(400).json({ errors: [{ message: 'User already exists' }] });
+                return res.status(400).json({ errors: [{ message: 'User already exists' }] });//getting a headers error because did not add return at the beginning - happens if it is not the last res.json in file
             }
 
 
             // get users gravatar 
-            const avator = gravatar.url(email, {
+            const avatar = gravatar.url(email, {
                 s: '200',
                 r: 'pg',
                 d: 'mm'
@@ -55,17 +56,21 @@ router.post("/", [
                 password
             });
             //encrypt password susing bycrpt
-            const salt = await bcrypt.genSalt(10);
 
-            user.password = await bcrypt.hash();
+            //or can do call-backs (.then, . catch)
+            //await is much more elegent and readable
+            const salt = await bcrypt.genSalt(10); //create salt to do hashing with
+
+            user.password = await bcrypt.hash(password, salt);//take password and hash it
+
+            await user.save(); //anything you have to return, have to create a promise
+
             //return jsonwebtoken
-            res.send('User Route');
+            res.send('User Registered');//to check if user is registered
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server error');
         }
-
-
     });
 
 module.exports = router;
