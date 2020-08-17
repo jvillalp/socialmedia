@@ -38,7 +38,7 @@ router.post("/", [
             let user = await User.findOne({ email });
 
             if (user) {
-                res.status(400).json({ errors: [{ message: 'User already exists' }] });
+                return res.status(400).json({ errors: [{ message: 'User already exists' }] });//getting a headers error because did not add return at the beginning - happens if it is not the last res.json in file
             }
 
 
