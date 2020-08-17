@@ -3,7 +3,7 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const
+const config = require('config');
 // need a second para, of middleware and check if username, if username, if length is same, check if there are any errors or if name is there
 const { check, validationResult } = require('express-validator')
 //@route          GET api/users
@@ -65,10 +65,10 @@ router.post("/", [
 
             user.password = await bcrypt.hash(password, salt);//take password and hash it
 
-            await user.save(); //anything you have to return, have to create a promise
+            await user.save(); //anything you have to return, have to create a promise - here we are saving user to database
 
             //return jsonwebtoken
-            res.send('User Registered');//to check if user is registered
+            // res.send('User Registered');//to check if user is registered
 
             const payload = {
                 user: {
@@ -76,7 +76,15 @@ router.post("/", [
                 }
             }
 
-            jwt.sign(payload,)
+            jwt.sign(
+                payload,
+                config.get('jwtToken'),
+                { expiresIn: 360000 },//optional
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });//send token back to client if no error
+                }
+            );
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server error');
