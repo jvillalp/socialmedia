@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://juanav14:Ronaldo!420@devconnector.p9dmk.mongodb.net/DevConnector?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://juanav14:Ronaldo!420@devconnector.p9dmk.mongodb.net/DevConnector?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
 }
