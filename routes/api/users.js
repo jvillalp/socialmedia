@@ -76,7 +76,7 @@ router.post("/", [
                 }
             }
 
-            jwt.sign(
+            jwt.sign( //this signature will be part of the json token
                 payload,
                 config.get('jwtSecret'),
                 { expiresIn: 360000 },//optional
