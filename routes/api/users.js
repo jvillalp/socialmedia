@@ -8,7 +8,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator')
 //@route          GET api/users
 //@desc           Test Route
-//@acess value    Pubic (do not need a token will create auth middleware)
+//@access value    Public (do not need a token will create auth middleware)
 
 //do not need .get request, only to check connection on postman
 // router.get("/", (req, res) => res.send("User Route"));
