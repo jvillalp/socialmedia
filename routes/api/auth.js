@@ -5,7 +5,7 @@ const User = require('../../models/User');
 
 //@route          GET api/auth
 //@desc           Test Route
-//@acess value    Pubic (do not need a token will create auth middleware)
+//@access value    Public (do not need a token will create auth middleware)
 router.get("/", auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');

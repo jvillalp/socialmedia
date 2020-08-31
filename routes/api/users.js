@@ -15,7 +15,7 @@ const { check, validationResult } = require('express-validator')
 
 //@desc           Regsiter User
 
-const User = require('../../models/user')
+const User = require('../../models/User')
 
 
 // []= is for the second param for the check
