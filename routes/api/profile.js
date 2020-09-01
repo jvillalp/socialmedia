@@ -102,7 +102,7 @@ router.post('/', [auth, [
 //@acess value    Public
 router.get('/', async (req, res) => {
     try {
-        cont profiles = await Profile.find().populate('user', ['name', 'avatar']);
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
         res.json(profiles)
     } catch (err) {
         console.error(err.message);
